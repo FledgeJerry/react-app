@@ -1,7 +1,7 @@
 import React from 'react';
 import UAuth from '@uauth/js'
 
-function UserMenu() {
+function UserMenuMoralis() {
 
   const uauth = new UAuth({
     clientID: "904b9409-c005-45a1-bf2f-8efefbe990a4",
@@ -14,15 +14,14 @@ function UserMenu() {
       <button onClick={
   window.login = async () => {
     try {
-      console.log('logging in with UD')
       const authorization = await uauth.loginWithPopup()
+   
       console.log(authorization)
-      console.log(authorization.idToken.email)
     } catch (error) {
       console.error(error)
     }
   }
-}>Login with UD</button>
+}>Connect Wallet</button>
       <script type="module" src="app.js"></script>
      
     </div>
@@ -43,4 +42,4 @@ function loginUD() {
 }
 }
 
-export default UserMenu;
+export default UserMenuMoralis;

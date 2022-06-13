@@ -1,4 +1,7 @@
 import React from "react";
+import { App } from "./Charts/FledgeHolders.tsx";
+import Portfolio from "./Charts/portfolioValue.tsx";
+import GetChains from "./CovalentData/GetChains.jsx";
 
 function Home() {
   return (
@@ -15,12 +18,16 @@ function Home() {
           <div class="col-lg-5">
             <h1 class="font-weight-light">Home</h1>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+              Welcome to the Fledge DAO!
             </p>
+          <App />
+          <div>
+            <a href="https://polygonscan.com/token/0x5118aec3afcca3f1e21733ee9c88bb800afe6f7b#balances" target="_blank" title="View on polygonscan">View Balances</a>
           </div>
+          </div>
+          <Portfolio />
+          <GetChains />
+
         </div>
       </div>
     </div>
