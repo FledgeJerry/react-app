@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import UserMenu from './header/UserMenu';
 import UserMenuMoralis from "./header/UserMenuMoralis";
+import { MoralisProvider } from "react-moralis";
 
 function Navigation() {
   return (
@@ -35,7 +36,11 @@ function Navigation() {
               </li>
             </ul>
             <UserMenu />
-            <UserMenuMoralis />
+            <React.StrictMode>
+              <MoralisProvider serverUrl="https://9tyik5gpl7u7.usemoralis.com:2053/server" appId="YpIP1OoTNtqjkfpt0dsEeGt9Ni9eVcu68cpua4HM">
+                  <UserMenuMoralis />
+              </MoralisProvider>
+            </React.StrictMode>
           </div>
         </div>
       </nav>

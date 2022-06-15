@@ -1,45 +1,52 @@
-import React from 'react';
-import UAuth from '@uauth/js'
+import React, { useEffect } from 'react';
+import { useMoralis } from 'react-moralis';
 
 function UserMenuMoralis() {
 
-  const uauth = new UAuth({
-    clientID: "904b9409-c005-45a1-bf2f-8efefbe990a4",
-    redirectUri: "http://localhost:3000/",
-    scope: "openid wallet email:optional humanity_check:optional"
-  })
+    const { authenticate, isAuthenticated, isAuthenticating, user, account, logout } = useMoralis();
 
-  return (
-    <div className="relative inline-flex" align="right">
-      <button onClick={
-  window.login = async () => {
-    try {
-      const authorization = await uauth.loginWithPopup()
-   
-      console.log(authorization)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-}>Connect Wallet</button>
-      <script type="module" src="app.js"></script>
-     
-    </div>
-  )
-
-
-function loginUD() {
-  window.login = async () => {
-    try {
-      console.log('logging in with UD')
-      const authorization = await uauth.loginWithPopup()
-      console.log(authorization)
-      console.log(authorization.idToken.email)
-    } catch (error) {
-      console.error(error)
-    }
-  }
+    useEffect(() => {
+    if (isAuthenticated) {
 }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated]);
+
+    const login = async () => {
+      if (!isAuthenticated) {
+
+        await authenticate({signingMessage: "Log in using Moralis" })
+          .then(function (user) {
+            console.log("logged in user:", user);
+            console.log(user.get("ethAddress"));
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+    }
+
+    const logOut = async () => {
+      await logout();
+      console.log("logged out");
+    }
+    
+    if (!isAuthenticated) {
+      return (
+        <div>
+          <button onClick={() => authenticate()}>Connect Wallet</button>
+        </div>
+      );
+    }
+  
+    return (
+      <div>
+        <div className="navbar-brand" to="/">
+            Welcome {user.get("username")}
+        </div>
+        <button onClick={logOut} disabled={isAuthenticating}>Logout</button>
+        </div>
+    );
+  
 }
 
 export default UserMenuMoralis;

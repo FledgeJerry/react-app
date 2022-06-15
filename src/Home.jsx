@@ -2,6 +2,10 @@ import React from "react";
 import { App } from "./Charts/FledgeHolders.tsx";
 import Portfolio from "./Charts/portfolioValue.tsx";
 import GetChains from "./CovalentData/GetChains.jsx";
+import GetAddressBalances from "./CovalentData/GetAddressBalances.jsx";
+import GetTokenHolderChanges from "./CovalentData/GetTokenHolderChanges.jsx";
+
+
 
 function Home() {
   return (
@@ -26,8 +30,9 @@ function Home() {
           </div>
           </div>
           <Portfolio />
+          <GetAddressBalances />
           <GetChains />
-
+          <GetTokenHolderChanges />
         </div>
       </div>
     </div>

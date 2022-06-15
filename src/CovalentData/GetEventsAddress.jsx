@@ -25,19 +25,12 @@ function GetChains () {
   const tokenId = 50
   const getData = async () => { 
 
+    
+    //get log events by contract address
+    const response = await fetch(new URL(`${baseURL}/${chainId}/events/address/${NFTAddress}/?starting-block=${beginBlock}&ending-block=${currentBlock}&key=${APIKEY}`));
 
-    //get NFT transactions for contract
-    const response = await fetch (new URL(`${baseURL}/${chainId}/tokens/${NFTAddress}/nft_transactions/${tokenId}/?key=${APIKEY}`))
-
-    //get NFT Meta Data
-//    const response = await fetch (new URL(`${baseURL}/${chainId}/tokens/${NFTAddress}/nft_metadata/${tokenId}/?key=${APIKEY}`))
-
-    //get transactions for address
-//    const response = await fetch  (new URL(`${baseURL}/${chainId}/address/${walletaddress}/transactions_v2/?key=${APIKEY}`));
-
-    //get a transaction
-//    const response = await fetch  (new URL(`${baseURL}/${chainId}/transaction_v2/${transactionId}/?key=${APIKEY}`));
-    //https://api.covalenthq.com/v1/1/transaction_v2/0xbda92389200cadac424d64202caeab70cd5e93756fe34c08578adeb310bba254/?key=ckey_2ae039c6d2e44fc5a17bf9b4e0d
+    //get event data
+//    const response = await fetch("https://api.covalenthq.com/v1/137/events/topics/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/?starting-block=12500000&ending-block=12500100&sender-address=0x985c0Fa941b5120B93FD2ba111485345EdD2bFe6&key=ckey_2ae039c6d2e44fc5a17bf9b4e0d")
 
 
 const data = response.json()

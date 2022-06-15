@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import React from 'react';
 
 
-function GetChains () {
+function GetTokenHolderChanges () {
   console.log('starting getting chains');
   const [items, setItems] = useState([]);
 
@@ -25,19 +25,8 @@ function GetChains () {
   const tokenId = 50
   const getData = async () => { 
 
-
-    //get NFT transactions for contract
-    const response = await fetch (new URL(`${baseURL}/${chainId}/tokens/${NFTAddress}/nft_transactions/${tokenId}/?key=${APIKEY}`))
-
-    //get NFT Meta Data
-//    const response = await fetch (new URL(`${baseURL}/${chainId}/tokens/${NFTAddress}/nft_metadata/${tokenId}/?key=${APIKEY}`))
-
-    //get transactions for address
-//    const response = await fetch  (new URL(`${baseURL}/${chainId}/address/${walletaddress}/transactions_v2/?key=${APIKEY}`));
-
-    //get a transaction
-//    const response = await fetch  (new URL(`${baseURL}/${chainId}/transaction_v2/${transactionId}/?key=${APIKEY}`));
-    //https://api.covalenthq.com/v1/1/transaction_v2/0xbda92389200cadac424d64202caeab70cd5e93756fe34c08578adeb310bba254/?key=ckey_2ae039c6d2e44fc5a17bf9b4e0d
+  //get changes in token holders between two block heights
+  const response = await fetch (new URL(`${baseURL}/${chainId}/tokens/${NFTAddress}/token_holders_changes/?starting-block=${beginBlock}&ending-block=${currentBlock}&key=${APIKEY}`))
 
 
 const data = response.json()
@@ -69,4 +58,4 @@ const data = response.json()
   
 }
 
-export default GetChains;
+export default GetTokenHolderChanges;
