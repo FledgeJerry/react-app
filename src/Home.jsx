@@ -4,7 +4,15 @@ import Portfolio from "./Charts/portfolioValue.tsx";
 import GetChains from "./CovalentData/GetChains.jsx";
 import GetAddressBalances from "./CovalentData/GetAddressBalances.jsx";
 import GetTokenHolderChanges from "./CovalentData/GetTokenHolderChanges.jsx";
-
+import GetTokenHolders from "./CovalentData/GetTokenHolders.jsx";
+import GetNFTMetaData from "./CovalentData/GetNFTMetaData.jsx";
+import GetNFTTransactions from "./CovalentData/GetNFTTransactions.jsx";
+import GetTransaction from "./CovalentData/GetTransaction.jsx";
+import GetAddressTransactions from "./CovalentData/GetAddressTransactions.jsx";
+import GetNFTTokenIDs from "./CovalentData/GetNFTTokenIDs.jsx";
+import GetEventsAddress from "./CovalentData/GetEventsAddress.jsx";
+import GetERC20Transfers from "./CovalentData/GetERC20Transfers.jsx";
+import GetPortfolioBalances from "./CovalentData/GetPortfolioBalances.jsx";
 
 
 function Home() {
@@ -33,6 +41,15 @@ function Home() {
           <GetAddressBalances />
           <GetChains />
           <GetTokenHolderChanges />
+          <GetTokenHolders />
+          <GetNFTMetaData />
+          <GetNFTTransactions />
+          <GetTransaction />
+          <GetAddressTransactions />
+          <GetNFTTokenIDs />
+          <GetEventsAddress />
+          <GetERC20Transfers />
+          <GetPortfolioBalances />
         </div>
       </div>
     </div>

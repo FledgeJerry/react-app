@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import React from 'react';
 
 
-function GetChains () {
-  console.log('starting getting chains');
+function GetERC20Transfers () {
+  console.log('starting GetERC20Transfers');
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -57,4 +57,4 @@ const data = response.json()
   
 }
 
-export default GetChains;
+export default GetERC20Transfers;

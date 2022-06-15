@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import React from 'react';
 
 
-function GetChains () {
-  console.log('starting getting chains');
+function GetPortfolioBalances () {
+  console.log('starting GetPortfolioBalances');
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -57,4 +57,4 @@ const data = response.json()
   
 }
 
-export default GetChains;
+export default GetPortfolioBalances;

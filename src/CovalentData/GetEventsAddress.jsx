@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import React from 'react';
 
 
-function GetChains () {
-  console.log('starting getting chains');
+function GetEventsAddress () {
+  console.log('starting GetEventsAddress');
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -62,4 +62,4 @@ const data = response.json()
   
 }
 
-export default GetChains;
+export default GetEventsAddress;

@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import React from 'react';
 
-
 function GetTokenHolderChanges () {
-  console.log('starting getting chains');
+  console.log('starting GetTokenHolderChanges');
   const [items, setItems] = useState([]);
 
   useEffect(() => {

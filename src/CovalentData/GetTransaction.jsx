@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import React from 'react';
 
 
-function GetChains () {
-  console.log('starting getting chains');
+function GetTransaction () {
+  console.log('starting GetTransaction');
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function GetChains () {
 const data = response.json()
     console.log('from the data');
     console.log(data);
-    console.log(response.data.data.contract_name);
+//    console.log(response.data.data.contract_name);
     let ContractName = data.contract_name;
     console.log(ContractName);
     console.log(data.data.item.contract_name);
@@ -58,4 +58,4 @@ const data = response.json()
   
 }
 
-export default GetChains;
+export default GetTransaction;
