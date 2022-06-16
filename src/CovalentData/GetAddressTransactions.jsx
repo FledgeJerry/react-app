@@ -43,7 +43,7 @@ const data = response.json()
       {console.log('returning data')}
       {console.log(items)}
       {console.log(items.contract_name)}
-      Is the Data Showing?
+      Address Transactions
       <ul>
         {items.map(item => (
           <li key={item.contract_address}>

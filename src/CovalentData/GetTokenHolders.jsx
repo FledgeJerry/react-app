@@ -1,15 +1,11 @@
 import { useState, useEffect } from "react";
 import React from 'react';
 
-
 function GetTokenHolders () {
   console.log('starting GetTokenHolders');
-  const [items, setItems] = useState([]);
+  const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    getData()
-  }, [])
-
+  const fetchData = async () => {
   const APIKEY = 'ckey_1ac376e7c80a4dd4b7ed60c8414'
   const baseURL = 'https://api.covalenthq.com/v1'
   const chainId = '137'
@@ -23,38 +19,34 @@ function GetTokenHolders () {
   const NFTAddress = flyAddress
   const contractAddress = flyAddress
   const tokenId = 50
-  const getData = async () => { 
 
-  //get token holders as of any block height
   const response = await fetch (new URL(`${baseURL}/${chainId}/tokens/${NFTAddress}/token_holders/?key=${APIKEY}`))
+  const data = await response.json();
+  const dataitems = data.data.items;
+  setUsers(dataitems)
+}
 
-const data = response.json()
-    console.log('from the data');
-    console.log(data);
-    console.log(response.data.data.contract_name);
-    let ContractName = data.contract_name;
-    console.log(ContractName);
-    console.log(data.data.item.contract_name);
-    setItems(data.data.item)
-  }
+useEffect(() => {
+  fetchData()
+}, [])
 
   return (
-    <div className="App">
-      {console.log('returning data')}
-      {console.log(items)}
-      {console.log(items.contract_name)}
-      Is the Data Showing?
-      <ul>
-        {items.map(item => (
-          <li key={item.contract_address}>
-            {item.contract_name}
-          </li>
-        ))}
-      </ul>
-      </div>
-  );
+    <div>
+      Fly Holders
+      Fly holders are granted access to vote on start-up funding.
+          <div>
+            <a href="https://flies.fldg.io" target="_blank" title="BuyFly">Buy a Fly</a>
+          </div>
 
-  
+      {users.length > 0 && (
+        <ul>
+          {users.map(items => (
+            <li>{items.address}: {items.balance}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
 }
 
 export default GetTokenHolders;

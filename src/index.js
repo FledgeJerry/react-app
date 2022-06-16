@@ -8,6 +8,8 @@ import {
   Home,
   Lookup,
   Vote,
+  Buy,
+  TrustToken,
 } from './';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
@@ -21,6 +23,8 @@ root.render(
       <Route path="/" element={<Home />} />
       <Route path="/lookup" element={<Lookup />} />
       <Route path="/vote" element={<Vote />} />
+      <Route path="/Buy" element={<Buy />} />
+      <Route path="/TrustToken" element={<TrustToken />} />
     </Routes>
   </Router>,
 
@@ -37,3 +41,5 @@ export { default as Navigation } from "./Navigation";
 export { default as Home } from "./Home";
 export { default as Lookup } from "./Lookup";
 export { default as Vote } from "./Vote";
+export { default as Buy } from "./Buy";
+export { default as TrustToken } from "./TrustToken";

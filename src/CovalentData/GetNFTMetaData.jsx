@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import React from 'react';
 
-
 function GetNFTMetaData () {
   console.log('starting GetNFTMetaData');
   const [items, setItems] = useState([]);
@@ -29,31 +28,28 @@ function GetNFTMetaData () {
   const response = await fetch (new URL(`${baseURL}/${chainId}/tokens/${NFTAddress}/nft_metadata/${tokenId}/?key=${APIKEY}`))
 
 const data = response.json()
-    console.log('from the data');
+    console.log('from the getNFTMetaData');
     console.log(data);
  //   console.log(response.data.data.contract_name);
     let ContractName = data.contract_name;
     console.log(ContractName);
-    console.log(data.data.item.contract_name);
-    setItems(data.data.item)
+    console.log(data.contract_name);
+    setItems(data.data.items)
   }
 
   return (
     <div className="App">
-      {console.log('returning data')}
+      {console.log('returning NFT Meta data')}
       {console.log(items)}
-      {console.log(items.contract_name)}
-      Is the Data Showing?
+      NFT Meta Data
       <ul>
-        {items.map(item => (
-          <li key={item.contract_address}>
-            {item.contract_name}
+        {items.map(items => (
+          <li key={items.contract_address}>{items.name}: {items.contract_name}
           </li>
         ))}
       </ul>
       </div>
   );
-
   
 }
 

@@ -21,7 +21,12 @@ function Navigation() {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/lookup">
-                  Lookup
+                  About
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/lookup">
+                  Trust Token
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -31,7 +36,7 @@ function Navigation() {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" to="/Buy">
-                  Buy
+                  Join
                 </NavLink>
               </li>
             </ul>

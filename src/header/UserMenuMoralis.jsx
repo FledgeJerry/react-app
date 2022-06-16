@@ -18,6 +18,7 @@ function UserMenuMoralis() {
           .then(function (user) {
             console.log("logged in user:", user);
             console.log(user.get("ethAddress"));
+            Window.UserAddress = user.get("ethAddress")
           })
           .catch(function (error) {
             console.log(error);
@@ -41,10 +42,11 @@ function UserMenuMoralis() {
     return (
       <div>
         <div className="navbar-brand" to="/">
-            Welcome {user.get("username")}
+            Welcome  {user.get("ethAddress")}
         </div>
         <button onClick={logOut} disabled={isAuthenticating}>Logout</button>
-        </div>
+      </div>
+
     );
   
 }

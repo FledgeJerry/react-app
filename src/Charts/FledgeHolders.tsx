@@ -43,5 +43,12 @@ export const data = {
 };
 
 export function App() {
-  return <Bubble options={options} data={data} />;
+  return (
+  <div>
+    <div>
+      <a href="https://polygonscan.com/token/0x5118aec3afcca3f1e21733ee9c88bb800afe6f7b#balances" target="_blank" title="View on polygonscan">View Balances</a>
+     </div>
+      <Bubble options={options} data={data} />
+  </div>
+  )
 }

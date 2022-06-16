@@ -1,9 +1,8 @@
 import React from "react";
-import GetTokenHolders from "./CovalentData/GetTokenHolders.jsx";
 
-function Lookup() {
+function TrustToken() {
   return (
-    <div className="lookup">
+    <div className="TrustToken">
       <div class="container">
         <div class="row align-items-center my-5">
           <div class="col-lg-7">
@@ -14,16 +13,15 @@ function Lookup() {
             />
           </div>
           <div class="col-lg-5">
-            <h1 class="font-weight-light">About The Fledge DAO</h1>
+            <h1 class="font-weight-light">Trust Tokens</h1>
             <p>
-              The Fledge DAO is a social cause Decentralized Autonomous Organization. We have Fledge Coin, NFT Project Fledge Flies, and NFT Trust Tokens that give access to our resources. 
+              Your Trust Token Status
             </p>
           </div>
-          <GetTokenHolders />
         </div>
       </div>
     </div>
   );
 }
 
-export default Lookup;
+export default TrustToken;

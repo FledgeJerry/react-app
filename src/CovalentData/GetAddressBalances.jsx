@@ -2,14 +2,13 @@ import { useState, useEffect } from "react";
 import React from 'react';
 
 
-function GetAddressBalances () {
-  console.log('starting getting address balances');
-  const [items, setItems] = useState([]);
+  function GetAddressBalances () {
+    console.log('starting getting address balances');
+    const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    getData()
-  }, [])
-
+    const fetchData = async () => {
+    //NEED TO GET CONNECTED USER'S ADDRESS HERE
+    
   const APIKEY = 'ckey_1ac376e7c80a4dd4b7ed60c8414'
   const baseURL = 'https://api.covalenthq.com/v1'
   const chainId = '137'
@@ -23,38 +22,34 @@ function GetAddressBalances () {
   const NFTAddress = flyAddress
   const contractAddress = flyAddress
   const tokenId = 50
-  const getData = async () => { 
 
-  //get address balances
-  const response = await fetch  (new URL(`${baseURL}/${chainId}/address/${walletaddress}/balances_v2/?key=${APIKEY}`));
-
-const data = response.json()
-    console.log('from the data');
-    console.log(data);
-//    console.log(response.data.data.contract_name);
-    let ContractName = data.contract_name;
-    console.log(ContractName);
-    console.log(data.data.item.contract_name);
-    setItems(data.data.item)
+    const response = await fetch  (new URL(`${baseURL}/${chainId}/address/${walletaddress}/balances_v2/?key=${APIKEY}`));
+    const data = await response.json();
+    const dataitems = data.data.items;
+    setUsers(dataitems)
   }
 
-  return (
-    <div className="App">
-      {console.log('returning data')}
-      {console.log(items)}
-      {console.log(items.contract_name)}
-      Is the Data Showing?
-      <ul>
-        {items.map(item => (
-          <li key={item.contract_address}>
-            {item.contract_name}
-          </li>
-        ))}
-      </ul>
-      </div>
-  );
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-  
+
+  //link below is going to the wrong place
+  return (
+    <div>
+      Address Balances
+      <div>
+            <a href="https://polygonscan.com/token/0x5118aec3afcca3f1e21733ee9c88bb800afe6f7b#balances" target="_blank" title="View on polygonscan">View Balances</a>
+      </div>
+      {users.length > 0 && (
+        <ul>
+          {users.map(items => (
+            <li>{items.contract_ticker_symbol}: {items.balance}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
 }
 
 export default GetAddressBalances;

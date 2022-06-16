@@ -13,12 +13,16 @@ function Buy() {
             />
           </div>
           <div class="col-lg-5">
-            <h1 class="font-weight-light">Buy</h1>
+            <h1 class="font-weight-light">Join the Fledge DAO</h1>
             <p>
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book.
+              Steps to Join the DAO
+              1. Get a wallet, e.g. MetaMask
+              2. Ensure you have the Matic Network imported
+              3. Import the FLDG token
+              4. Request your free FLDG
+              5. Connect you walled or domain
+              6. Mint your first trust token - The Fledge's Trust First - this is free
+              7. You are now a member of the DAO, are you ready to build a better world
             </p>
           </div>
         </div>
