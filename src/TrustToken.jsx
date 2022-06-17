@@ -1,4 +1,5 @@
 import React from "react";
+import GetTokenHolders from "./CovalentData/GetTokenHolders.jsx";
 
 function TrustToken() {
   return (
@@ -12,11 +13,33 @@ function TrustToken() {
               alt=""
             />
           </div>
-          <div class="col-lg-5">
+          <div >
             <h1 class="font-weight-light">Trust Tokens</h1>
             <p>
               Your Trust Token Status
             </p>
+            <div>
+              <p>
+                <h2>Have </h2>
+              </p>
+              <img src={require('./Images/TrustFirst.PNG')} width="150" height="150" />
+              <GetTokenHolders />
+            </div>
+            <div>
+              <p>
+                <h2>Can Mint</h2>         
+              </p>
+            </div>
+            <div>
+              <p>
+                <h2>Deficit</h2> 
+              </p>
+            </div>
+            <div>
+              <p>
+                <h2>Wishlist</h2>
+              </p>
+            </div>
           </div>
         </div>
       </div>

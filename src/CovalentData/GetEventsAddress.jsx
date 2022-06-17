@@ -1,15 +1,9 @@
-import { useState, useEffect } from "react";
-import React from 'react';
-
+//import React from 'react';
+import React, { useEffect, useState } from "react";
 
 function GetEventsAddress () {
-  console.log('starting GetEventsAddress');
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    getData()
-  }, [])
-
+    console.log('starting getting address balances');
+    const [users, setUsers] = useState([]);
   const APIKEY = 'ckey_1ac376e7c80a4dd4b7ed60c8414'
   const baseURL = 'https://api.covalenthq.com/v1'
   const chainId = '137'
@@ -23,43 +17,33 @@ function GetEventsAddress () {
   const NFTAddress = flyAddress
   const contractAddress = flyAddress
   const tokenId = 50
-  const getData = async () => { 
 
-    
-    //get log events by contract address
-    const response = await fetch(new URL(`${baseURL}/${chainId}/events/address/${NFTAddress}/?starting-block=${beginBlock}&ending-block=${currentBlock}&key=${APIKEY}`));
-
-    //get event data
-//    const response = await fetch("https://api.covalenthq.com/v1/137/events/topics/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/?starting-block=12500000&ending-block=12500100&sender-address=0x985c0Fa941b5120B93FD2ba111485345EdD2bFe6&key=ckey_2ae039c6d2e44fc5a17bf9b4e0d")
-
-
-const data = response.json()
-    console.log('from the data');
-    console.log(data);
-    console.log(response.data.data.contract_name);
-    let ContractName = data.contract_name;
-    console.log(ContractName);
-    console.log(data.data.item.contract_name);
-    setItems(data.data.item)
+    const fetchData = async () => {
+    //NEED TO GET CONNECTED USER'S ADDRESS HERE
+    const useraddress = "demo.eth";
+    const response = await fetch("https://api.covalenthq.com/v1/1/address/" + useraddress + "/balances_v2/?key=ckey_2ae039c6d2e44fc5a17bf9b4e0d");
+    const data = await response.json();
+    const dataitems = data.data.items;
+    setUsers(dataitems)
   }
 
-  return (
-    <div className="App">
-      {console.log('returning data')}
-      {console.log(items)}
-      {console.log(items.contract_name)}
-      Is the Data Showing?
-      <ul>
-        {items.map(item => (
-          <li key={item.contract_address}>
-            {item.contract_name}
-          </li>
-        ))}
-      </ul>
-      </div>
-  );
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-  
-}
+    return (
+      <div>
+      {console.log('returning data get transactions')}
+      <h3>Transactions</h3>
+          {users.length > 0 && (
+            <ul>
+              {users.map(items => (
+                <li>{items.contract_ticker_symbol}: {items.balance}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )
+    }
 
 export default GetEventsAddress;

@@ -43,7 +43,7 @@ const data = response.json()
       {console.log('returning data')}
       {console.log(items)}
       {console.log(items.contract_name)}
-      Is the Data Showing?
+      <h3>Token Holder Changes</h3>
       <ul>
         {items.map(item => (
           <li key={item.contract_address}>

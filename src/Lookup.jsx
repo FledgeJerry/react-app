@@ -5,7 +5,7 @@ function Lookup() {
   return (
     <div className="lookup">
       <div class="container">
-        <div class="row align-items-center my-5">
+        <div>
           <div class="col-lg-7">
             <img
               class="img-fluid rounded mb-4 mb-lg-0"
@@ -18,8 +18,10 @@ function Lookup() {
             <p>
               The Fledge DAO is a social cause Decentralized Autonomous Organization. We have Fledge Coin, NFT Project Fledge Flies, and NFT Trust Tokens that give access to our resources. 
             </p>
+            <img src={require('./Images/TheFledgeDAO.png')} />
+            <GetTokenHolders />
+
           </div>
-          <GetTokenHolders />
         </div>
       </div>
     </div>

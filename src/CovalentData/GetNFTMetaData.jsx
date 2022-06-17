@@ -41,7 +41,7 @@ const data = response.json()
     <div className="App">
       {console.log('returning NFT Meta data')}
       {console.log(items)}
-      NFT Meta Data
+      <h3>NFT Meta Data</h3>
       <ul>
         {items.map(items => (
           <li key={items.contract_address}>{items.name}: {items.contract_name}

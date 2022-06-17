@@ -40,10 +40,9 @@ const data = response.json()
 
   return (
     <div className="App">
-      {console.log('returning data')}
+      {console.log('returning data from NFT Transactions')}
       {console.log(items)}
-      {console.log(items.contract_name)}
-      Is the Data Showing?
+      <h3>NFT Transactions</h3>
       <ul>
         {items.map(item => (
           <li key={item.contract_address}>

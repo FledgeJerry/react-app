@@ -40,10 +40,10 @@ const data = response.json()
 
   return (
     <div className="App">
-      {console.log('returning data')}
+      {console.log('returning data from ERC20')}
       {console.log(items)}
       {console.log(items.contract_name)}
-      Is the Data Showing?
+      <h3>ERC 20 Token Transfers</h3>
       <ul>
         {items.map(item => (
           <li key={item.contract_address}>

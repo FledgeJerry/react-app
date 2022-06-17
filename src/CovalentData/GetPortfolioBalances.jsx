@@ -29,7 +29,7 @@ function GetPortfolioBalances () {
   const response = await fetch (new URL(`${baseURL}/${chainId}/address/${walletaddress}/portfolio_v2/?key=${APIKEY}`))
 
 const data = response.json()
-    console.log('from the data');
+    console.log('from the data portfolio balances');
     console.log(data);
     console.log(response.data.data.contract_name);
     let ContractName = data.contract_name;
@@ -40,10 +40,9 @@ const data = response.json()
 
   return (
     <div className="App">
-      {console.log('returning data')}
+      {console.log('returning data from portfolio balances')}
       {console.log(items)}
-      {console.log(items.contract_name)}
-      Is the Data Showing?
+      <h3>Portfolio Balances</h3>
       <ul>
         {items.map(item => (
           <li key={item.contract_address}>

@@ -25,7 +25,7 @@ function Navigation() {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/lookup">
+                <NavLink className="nav-link" to="/TrustToken">
                   Trust Token
                 </NavLink>
               </li>

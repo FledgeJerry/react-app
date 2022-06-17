@@ -1,15 +1,9 @@
-import { useState, useEffect } from "react";
 import React from 'react';
-
+import { useState, useEffect } from "react";
 
 function GetAddressTransactions () {
-  console.log('starting GetAddressTransactions');
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    getData()
-  }, [])
-
+  console.log('starting getting address balances');
+  const [users, setUsers] = useState([]);
   const APIKEY = 'ckey_1ac376e7c80a4dd4b7ed60c8414'
   const baseURL = 'https://api.covalenthq.com/v1'
   const chainId = '137'
@@ -23,38 +17,37 @@ function GetAddressTransactions () {
   const NFTAddress = flyAddress
   const contractAddress = flyAddress
   const tokenId = 50
-  const getData = async () => { 
 
-  //get transactions for address
+  const fetchData = async () => {
+  //NEED TO GET CONNECTED USER'S ADDRESS HERE
+  const useraddress = "demo.eth";
   const response = await fetch  (new URL(`${baseURL}/${chainId}/address/${walletaddress}/transactions_v2/?key=${APIKEY}`));
-
-const data = response.json()
-    console.log('from the data');
-    console.log(data);
-    console.log(response.data.data.contract_name);
-    let ContractName = data.contract_name;
-    console.log(ContractName);
-    console.log(data.data.item.contract_name);
-    setItems(data.data.item)
-  }
-
-  return (
-    <div className="App">
-      {console.log('returning data')}
-      {console.log(items)}
-      {console.log(items.contract_name)}
-      Address Transactions
-      <ul>
-        {items.map(item => (
-          <li key={item.contract_address}>
-            {item.contract_name}
-          </li>
-        ))}
-      </ul>
-      </div>
-  );
+  const data = await response.json();
+  const dataitems = data.data.items;
+  console.log(dataitems)
+  setUsers(dataitems)
+}
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   
+  return (
+     <div>
+        <h3>Address Transactions</h3>
+      <div>
+        <a href="https://polygonscan.com/token/0x5118aec3afcca3f1e21733ee9c88bb800afe6f7b#balances" target="_blank" title="View on polygonscan">View Balances</a>
+      </div>
+
+      {users.length > 0 && (
+        <ul>
+          {users.map(items => (
+            <li>{items.block_signed_at}: {items.to_address_label}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  )
 }
 
 export default GetAddressTransactions;

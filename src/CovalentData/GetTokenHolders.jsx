@@ -32,8 +32,10 @@ useEffect(() => {
 
   return (
     <div>
-      Fly Holders
-      Fly holders are granted access to vote on start-up funding.
+      <h3>Fly Holders</h3>
+      <p>
+        Fly holders are granted access to vote on start-up funding.
+      </p>
           <div>
             <a href="https://flies.fldg.io" target="_blank" title="BuyFly">Buy a Fly</a>
           </div>

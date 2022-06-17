@@ -41,10 +41,9 @@ const data = response.json()
 
   return (
     <div className="App">
-      {console.log('returning data')}
+      {console.log('returning data get transactions')}
       {console.log(items)}
-      {console.log(items.contract_name)}
-      Is the Data Showing?
+      <h3>Transactions</h3>
       <ul>
         {items.map(item => (
           <li key={item.contract_address}>
