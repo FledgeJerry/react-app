@@ -18,13 +18,14 @@ function UserMenu() {
       const authorization = await uauth.loginWithPopup()
       console.log(authorization)
       console.log(authorization.idToken.email)
+      console.log(authorization.idToken.wallet_address)
     } catch (error) {
       console.error(error)
     }
   }
 }>Login with UD</button>
       <script type="module" src="app.js"></script>
-     
+
     </div>
   )
 

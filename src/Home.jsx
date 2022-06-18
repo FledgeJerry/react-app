@@ -1,7 +1,6 @@
 import React from "react";
 import { App } from "./Charts/FledgeHolders.tsx";
 import Portfolio from "./Charts/portfolioValue.tsx";
-import GetChains from "./CovalentData/GetChains.jsx";
 import GetAddressBalances from "./CovalentData/GetAddressBalances.jsx";
 import GetTokenHolderChanges from "./CovalentData/GetTokenHolderChanges.jsx";
 import GetTokenHolders from "./CovalentData/GetTokenHolders.jsx";
@@ -34,29 +33,26 @@ function Home() {
           </div>
           <div>
             <p>
-            <h2>How is the DAO doing? </h2>
-            </p>
-            <App />
-            <GetTokenHolders />
-
-          </div>
-          <div>
-            <p>
               <h2>How are you doing?</h2>
             </p>
             <Portfolio />
+            <GetPortfolioBalances />
             <GetAddressBalances />
+            <GetERC20Transfers />
+            <GetEventsAddress />
+            <GetAddressTransactions />
           </div>
-          <GetChains />
-          <GetTokenHolderChanges />
-          <GetNFTMetaData />
-          <GetNFTTransactions />
-          <GetTransaction />
-          <GetAddressTransactions />
-          <GetNFTTokenIDs />
-          <GetEventsAddress />
-          <GetERC20Transfers />
-          <GetPortfolioBalances />
+          <div class="col-lg-5">
+            <p>
+              <h2>How is the DAO doing? </h2>
+            </p>
+            <App />
+            <GetTokenHolders />
+            <GetTokenHolderChanges />
+            <GetNFTMetaData />
+            <GetNFTTransactions />
+            <GetTransaction />
+          </div>
         </div>
       </div>
     </div>

@@ -1,15 +1,8 @@
-import { useState, useEffect } from "react";
-import React from 'react';
-
+import React, { useEffect, useState } from "react";
 
 function GetPortfolioBalances () {
-  console.log('starting GetPortfolioBalances');
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    getData()
-  }, [])
-
+  console.log('starting getting address balances');
+  const [users, setUsers] = useState([]);
   const APIKEY = 'ckey_1ac376e7c80a4dd4b7ed60c8414'
   const baseURL = 'https://api.covalenthq.com/v1'
   const chainId = '137'
@@ -23,37 +16,38 @@ function GetPortfolioBalances () {
   const NFTAddress = flyAddress
   const contractAddress = flyAddress
   const tokenId = 50
-  const getData = async () => { 
 
-  //get portfolio balances
-  const response = await fetch (new URL(`${baseURL}/${chainId}/address/${walletaddress}/portfolio_v2/?key=${APIKEY}`))
+    const fetchData = async () => {
+    //NEED TO GET CONNECTED USER'S ADDRESS HERE
+    const response = await fetch (new URL(`${baseURL}/${chainId}/address/${walletaddress}/portfolio_v2/?key=${APIKEY}`))
 
-const data = response.json()
-    console.log('from the data portfolio balances');
-    console.log(data);
-    console.log(response.data.data.contract_name);
-    let ContractName = data.contract_name;
-    console.log(ContractName);
-    console.log(data.data.item.contract_name);
-    setItems(data.data.item)
+    const data = await response.json();
+    const dataitems = data.data.items;
+    console.log(dataitems)
+    setUsers(dataitems)
   }
 
-  return (
-    <div className="App">
-      {console.log('returning data from portfolio balances')}
-      {console.log(items)}
-      <h3>Portfolio Balances</h3>
-      <ul>
-        {items.map(item => (
-          <li key={item.contract_address}>
-            {item.contract_name}
-          </li>
-        ))}
-      </ul>
-      </div>
-  );
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-  
-}
+
+
+    return (
+        <div>
+        	<h3>Portfolio Balances (trends)</h3>
+      	<div>
+        		<a href="https://polygonscan.com/token/0x5118aec3afcca3f1e21733ee9c88bb800afe6f7b#balances" target="_blank" title="View on polygonscan">View Balances</a>
+      	</div>
+          {users.length > 0 && (
+            <ul>
+              {users.map(items => (
+                <li>{items.contract_ticker_symbol}: {items.balance}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )
+    }
 
 export default GetPortfolioBalances;

@@ -1,6 +1,4 @@
-import { useState, useEffect } from "react";
-import React from 'react';
-
+import React, { useState, useEffect } from "react";
 
   function GetAddressBalances () {
     console.log('starting getting address balances');
@@ -24,6 +22,7 @@ import React from 'react';
     const response = await fetch  (new URL(`${baseURL}/${chainId}/address/${walletaddress}/balances_v2/?key=${APIKEY}`));
     const data = await response.json();
     const dataitems = data.data.items;
+    console.log(dataitems)
     setUsers(dataitems)
   }
 
@@ -31,7 +30,6 @@ import React from 'react';
     fetchData()
   }, [])
 
-  //link below is going to the wrong place
   return (
     <div>
       <h3>Address Balances</h3>

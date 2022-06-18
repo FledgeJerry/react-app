@@ -1,5 +1,6 @@
 import React from "react";
 import GetTokenHolders from "./CovalentData/GetTokenHolders.jsx";
+import GetNFTTokenIDs from "./CovalentData/GetNFTTokenIDs.jsx";
 
 function TrustToken() {
   return (
@@ -23,6 +24,7 @@ function TrustToken() {
                 <h2>Have </h2>
               </p>
               <img src={require('./Images/TrustFirst.PNG')} width="150" height="150" />
+              <GetNFTTokenIDs />
               <GetTokenHolders />
             </div>
             <div>

@@ -23,6 +23,7 @@ function GetTokenHolders () {
   const response = await fetch (new URL(`${baseURL}/${chainId}/tokens/${NFTAddress}/token_holders/?key=${APIKEY}`))
   const data = await response.json();
   const dataitems = data.data.items;
+  console.log(dataitems)
   setUsers(dataitems)
 }
 

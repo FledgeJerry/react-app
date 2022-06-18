@@ -1,15 +1,8 @@
-import { useState, useEffect } from "react";
-import React from 'react';
-
+import React, { useEffect, useState } from "react";
 
 function GetERC20Transfers () {
-  console.log('starting GetERC20Transfers');
-  const [items, setItems] = useState([]);
-
-  useEffect(() => {
-    getData()
-  }, [])
-
+  console.log('starting getting ERC20 transfers');
+  const [users, setUsers] = useState([]);
   const APIKEY = 'ckey_1ac376e7c80a4dd4b7ed60c8414'
   const baseURL = 'https://api.covalenthq.com/v1'
   const chainId = '137'
@@ -23,38 +16,42 @@ function GetERC20Transfers () {
   const NFTAddress = flyAddress
   const contractAddress = flyAddress
   const tokenId = 50
-  const getData = async () => { 
 
-  //get ERC20 token transfers for address
-  const response = await fetch (new URL(`${baseURL}/${chainId}/address/${walletaddress}/transfers_v2/?contract-address=${contractAddress}&key=${APIKEY}`))
-
-const data = response.json()
-    console.log('from the data');
-    console.log(data);
-    console.log(response.data.data.contract_name);
-    let ContractName = data.contract_name;
-    console.log(ContractName);
-    console.log(data.data.item.contract_name);
-    setItems(data.data.item)
+    const fetchData = async () => {
+    //get ERC20 token transfers for address
+    const response = await fetch (new URL(`${baseURL}/${chainId}/address/${walletaddress}/transfers_v2/?contract-address=${contractAddress}&key=${APIKEY}`))
+    const data = await response.json();
+    const dataitems = data.data.items;
+    console.log(dataitems)
+    setUsers(dataitems)
   }
 
-  return (
-    <div className="App">
-      {console.log('returning data from ERC20')}
-      {console.log(items)}
-      {console.log(items.contract_name)}
-      <h3>ERC 20 Token Transfers</h3>
-      <ul>
-        {items.map(item => (
-          <li key={item.contract_address}>
-            {item.contract_name}
-          </li>
-        ))}
-      </ul>
-      </div>
-  );
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-  
-}
 
-export default GetERC20Transfers;
+
+    return (
+        <div>
+        	<h3>ERC 20 Transfers</h3>
+          <p>This has another array inside the array, we need to figure out how to use this. Also, is this where we can see if an address qualifies for a Trust Token?</p>
+      	<div>
+        		<a href="https://polygonscan.com/token/0x5118aec3afcca3f1e21733ee9c88bb800afe6f7b#balances" target="_blank" title="View on polygonscan">View Balances</a>
+      	</div>
+          {users.length > 0 && (
+            <ul>
+              {users.map(items => (
+                <li>{items.to_address}: {items.value} {items.block_signed_at}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )
+    }
+
+
+
+
+
+  export default GetERC20Transfers;

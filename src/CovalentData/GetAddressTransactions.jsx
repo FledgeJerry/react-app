@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 function GetAddressTransactions () {
   console.log('starting getting address balances');
@@ -38,7 +37,6 @@ function GetAddressTransactions () {
       <div>
         <a href="https://polygonscan.com/token/0x5118aec3afcca3f1e21733ee9c88bb800afe6f7b#balances" target="_blank" title="View on polygonscan">View Balances</a>
       </div>
-
       {users.length > 0 && (
         <ul>
           {users.map(items => (
