@@ -8,7 +8,6 @@ import GetNFTMetaData from "./CovalentData/GetNFTMetaData.jsx";
 import GetNFTTransactions from "./CovalentData/GetNFTTransactions.jsx";
 import GetTransaction from "./CovalentData/GetTransaction.jsx";
 import GetAddressTransactions from "./CovalentData/GetAddressTransactions.jsx";
-import GetNFTTokenIDs from "./CovalentData/GetNFTTokenIDs.jsx";
 import GetEventsAddress from "./CovalentData/GetEventsAddress.jsx";
 import GetERC20Transfers from "./CovalentData/GetERC20Transfers.jsx";
 import GetPortfolioBalances from "./CovalentData/GetPortfolioBalances.jsx";
@@ -43,9 +42,7 @@ function Home() {
             <GetAddressTransactions />
           </div>
           <div class="col-lg-5">
-            <p>
-              <h2>How is the DAO doing? </h2>
-            </p>
+            <h2>How is the DAO doing? </h2>
             <App />
             <GetTokenHolders />
             <GetTokenHolderChanges />

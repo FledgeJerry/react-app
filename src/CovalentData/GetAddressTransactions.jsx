@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function GetAddressTransactions () {
-  console.log('starting getting address balances');
+  console.log('starting getting address transactions');
   const [users, setUsers] = useState([]);
   const APIKEY = 'ckey_1ac376e7c80a4dd4b7ed60c8414'
   const baseURL = 'https://api.covalenthq.com/v1'
@@ -12,14 +12,13 @@ function GetAddressTransactions () {
   const flyAddress = '0x3A3f6DA5baE9974C66B16CD4B1EfD1585c081B19'
   const currentBlock = 29613135
   const beginBlock = currentBlock - 1000000
+  //need to set this to the address of the current user, but need another page to be for specific addresses
   const walletaddress = fldgMarketingAddress
   const NFTAddress = flyAddress
   const contractAddress = flyAddress
   const tokenId = 50
 
   const fetchData = async () => {
-  //NEED TO GET CONNECTED USER'S ADDRESS HERE
-  const useraddress = "demo.eth";
   const response = await fetch  (new URL(`${baseURL}/${chainId}/address/${walletaddress}/transactions_v2/?key=${APIKEY}`));
   const data = await response.json();
   const dataitems = data.data.items;
@@ -33,7 +32,8 @@ function GetAddressTransactions () {
   
   return (
      <div>
-        <h3>Address Transactions</h3>
+        <h3>Address Transactions (Polygon)</h3>
+        <p>These are the transactions associated with your address. These transactions can be used to identify trust tokens you have earned.</p>
       <div>
         <a href="https://polygonscan.com/token/0x5118aec3afcca3f1e21733ee9c88bb800afe6f7b#balances" target="_blank" title="View on polygonscan">View Balances</a>
       </div>
