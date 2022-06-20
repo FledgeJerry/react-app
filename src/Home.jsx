@@ -29,6 +29,7 @@ function Home() {
             <p>
                The Fledge DAO: on a mission to eliminate poverty through innovation, entrepreneurship, and regenerative methods. We are a radically inclusive ideation and makerspace, inbuator and accelerator.
             </p>
+            <a href="https://thefledge.itch.io/fledgex" target="_blank" title="Virtual Tour"> Take a Virtual Tour </a>
           </div>
           <div>
             <p>
